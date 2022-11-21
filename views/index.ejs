@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.css">
+    <title>Retro Itself</title>
+    <style type="text/css">
+        body {
+            background: #271c27;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-2">
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list"
+                   href="#list-home" role="tab" aria-controls="home">🍖 MAMINTI</a>
+                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
+                   href="#list-profile" role="tab" aria-controls="profile">🦄 FISH-UNICORN</a>
+                <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
+                   href="#list-messages" role="tab" aria-controls="messages">🦊 FOXIAN</a>
+            </div>
+        </div>
+        <div class="col-10 m-auto">
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        START 💡
+                                    </div>
+                                    <ul class="list-group list-group-flush" id="list00">
+                                        <li class="list-group-item" id='add'>
+                                            <input class="form-control-sm w-100" placeholder="Add note..."
+                                                   onkeydown="search(this, 0, 0)">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        STOP ☠️
+                                    </div>
+                                    <ul class="list-group list-group-flush" id="list01">
+                                        <li class="list-group-item">
+                                            <input class="form-control-sm w-100" placeholder="Add note..."
+                                                   onkeydown="search(this, 0, 1)">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        CONTINUE ⛷️
+                                    </div>
+                                    <ul class="list-group list-group-flush" id="list02">
+                                        <li class="list-group-item">
+                                            <input class="form-control-sm w-100" placeholder="Add note..."
+                                                   onkeydown="search(this, 0, 2)">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        START 💡
+                                    </div>
+                                    <ul class="list-group list-group-flush" id="list10">
+                                        <li class="list-group-item">
+                                            <input class="form-control-sm w-100" placeholder="Add note..."
+                                                   onkeydown="search(this, 1, 0)">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        STOP ☠️
+                                    </div>
+                                    <ul class="list-group list-group-flush" id="list11">
+                                        <li class="list-group-item">
+                                            <input class="form-control-sm w-100" placeholder="Add note..."
+                                                   onkeydown="search(this, 1, 1)">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        CONTINUE ⛷️
+                                    </div>
+                                    <ul class="list-group list-group-flush" id="list12">
+                                        <li class="list-group-item">
+                                            <input class="form-control-sm w-100" placeholder="Add note..."
+                                                   onkeydown="search(this, 1, 2)">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        START 💡
+                                    </div>
+                                    <ul class="list-group list-group-flush" id="list20">
+                                        <li class="list-group-item">
+                                            <input class="form-control-sm w-100" placeholder="Add note..."
+                                                   onkeydown="search(this, 2, 0)">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        STOP ☠️
+                                    </div>
+                                        <li class="list-group-item">
+                                            <input class="form-control-sm w-100" placeholder="Add note..."
+                                                   onkeydown="search(this, 2, 1)">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        CONTINUE ⛷️
+                                    </div>
+                                    <ul class="list-group list-group-flush" id="list22">
+                                        <li class="list-group-item">
+                                            <input class="form-control-sm w-100" placeholder="Add note..."
+                                                   onkeydown="search(this, 2, 2)">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    init();
+
+    function init() {
+        fetch('/list', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            },
+        })
+            .then(response => response.text())
+            .then(text => refreshList(text))
+    }
+
+    function search(ele, team, column) {
+        if (event.key === 'Enter' && ele.value !== "") {
+            fetch('/add', {
+                method: 'PUT',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "team": team,
+                    "column": column,
+                    "text": ele.value
+                })
+            });
+
+            ele.value = ''
+        }
+    }
+
+    const source = new EventSource('/event');
+
+    source.addEventListener('message', message => {
+        console.log('Got', message);
+        console.log('Data', event.data);
+        refreshList(event.data)
+    });
+
+    function getLIChildren(id) {
+        let children = document.getElementById(id).childNodes;
+        let result = [];
+        children.forEach(child => {
+            if (child.nodeName === 'LI') {
+                result.push(child);
+            }
+        })
+        return result;
+    }
+
+
+    function refreshList(list) {
+        list = JSON.parse(list);
+        console.log(list[0][0][0])
+
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+
+                for (let k = 0; k < list[i][j].length; k++) {
+                    let children = getLIChildren('list' + i + j);
+                    
+                    if (children[k].className === 'list-group-item') {
+                        console.log(`${k} <=> ${children.length - 1}`)
+                        if (k < children.length - 1) {
+                            children[k].innerText = list[i][j][k];
+                        } else if (k === children.length - 1) {
+                            let li = document.createElement("li");
+                            li.className = "list-group-item";
+                            li.appendChild(document.createTextNode(list[i][j][k]));
+                            children[k].parentNode.insertBefore(li, children[k]);
+                        } else {
+
+                        }
+                    }
+
+                }
+            }
+        }
+
+
+    }
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
