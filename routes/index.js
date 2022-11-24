@@ -1,11 +1,20 @@
 var express = require('express');
 var router = express.Router();
 
-let list = [
-    [[],[],[]],
-    [[],[],[]],
-    [[],[],[]]
-];
+
+const Schema = require('mongoose').Schema
+
+const mongoose = require('mongoose')
+
+mongoose.connect(process.env.mongoUrl, {useNewUrlParser: true}).then(r =>{})
+
+module.exports = mongoose
+
+const Data = mongoose.model('Data', {data: [
+    [[String],[String],[String]],
+    [[String],[String],[String]],
+    [[String],[String],[String]]
+]})
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -14,13 +23,24 @@ router.get('/', function(req, res, next) {
 
 
 
+
 router.get('/list', function(req, res, next) {
-  res.json(list);
+    Data.findOne({}, (err, dataModel) => {
+        if(dataModel === null) {
+            dataModel = new Data();
+            dataModel.data =  [
+                [[],[],[]],
+                [[],[],[]],
+                [[],[],[]]
+            ];
+            dataModel.save(err=>{});
+        }
+        res.json(dataModel.data);
+    });
 });
 
-activeResponses = [];
+clients = [];
 router.get('/event', function(req, res) {
-    console.log('Got /events');
     res.set({
         'Cache-Control': 'no-cache',
         'Content-Type': 'text/event-stream',
@@ -31,17 +51,52 @@ router.get('/event', function(req, res) {
     // Tell the client to retry every 10 seconds if connectivity is lost
     res.write('retry: 10000\n\n');
 
-    activeResponses.push(res);
+    const clientId = Date.now();
+
+    const newClient = {
+      id: clientId,
+      response: res
+    };
+    
+    clients.push(newClient);
+
+    req.on('close', () => {
+      clients = clients.filter(client => client.id !== clientId);
+      console.log(`${new Date().toLocaleString('en-US')} - connection closed, active clients: ${clients.length}`);
+    });
+    
+    console.log(`${new Date().toLocaleString('en-US')} - client signed up to the event, active clients: ${clients.length}`);
 });
 
 router.put('/add', function(req, res, next) {
-    let newData  = req.body;
-    console.log(newData);
-    list[newData.team][newData.column].push(newData.text);
-    activeResponses.forEach(response => {
-        response.write(`data: ${JSON.stringify(list)}\n\n`)
-    })
-    res.sendStatus(200);
+    Data.findOne({}, (err, dataModel) => {
+        if(dataModel === null) {
+            dataModel = new Data();
+            dataModel.data =  [
+                [[],[],[]],
+                [[],[],[]],
+                [[],[],[]]
+            ];
+        } 
+        
+        let newData  = req.body;
+        dataModel.data[newData.team][newData.column].push(newData.text);
+        
+        clients.forEach(client => {
+            client.response.write(`data: ${JSON.stringify(dataModel.data)}\n\n`)
+        })
+        
+        res.sendStatus(200);
+        
+        dataModel.markModified('data');
+        dataModel.save(err=>{
+            if(err) {
+              console.log(`${new Date().toLocaleString('en-US')} - save model error - ${err}`);
+            }
+        });
+        
+        console.log(`${new Date().toLocaleString('en-US')} - note added, active clients: ${clients.length}`);
+    });
 });
 
 

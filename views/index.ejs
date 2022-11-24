@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.css">
     <title>Retro Itself</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪧</text></svg>">
     <style type="text/css">
         body {
             background: #271c27;
@@ -14,22 +15,27 @@
 <body>
 <div class="container">
     <div class="row mt-5">
-        <div class="col-2">
+        <div class="col-sm">
+            <select class="form-select-sm mb-3 w-100 p-2" aria-label="Default select example">
+              <option value="1">SPRINT 1</option>
+              <option value="2">SPRINT 2</option>
+              <option value="3" selected>SPRINT 3</option>
+            </select>
             <div class="list-group" id="list-tab" role="tablist">
                 <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list"
-                   href="#list-home" role="tab" aria-controls="home">🍖 MAMINTI</a>
+                   href="#list-home" role="tab" aria-controls="home">🐰 MAMINTI</a>
                 <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
                    href="#list-profile" role="tab" aria-controls="profile">🦄 FISH-UNICORN</a>
                 <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
                    href="#list-messages" role="tab" aria-controls="messages">🦊 FOXIAN</a>
             </div>
         </div>
-        <div class="col-10 m-auto">
+        <div class="col-10 m-auto mt-lg-0 mt-2">
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
                     <div class="container">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-sm">
                                 <div class="card">
                                     <div class="card-header">
                                         START 💡
@@ -42,7 +48,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-sm mt-sm-0 mt-2">
                                 <div class="card">
                                     <div class="card-header">
                                         STOP ☠️
@@ -55,7 +61,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-sm mt-sm-0 mt-2">
                                 <div class="card">
                                     <div class="card-header">
                                         CONTINUE ⛷️
@@ -74,7 +80,7 @@
                 <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
                     <div class="container">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-sm">
                                 <div class="card">
                                     <div class="card-header">
                                         START 💡
@@ -87,7 +93,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-sm mt-sm-0 mt-2">
                                 <div class="card">
                                     <div class="card-header">
                                         STOP ☠️
@@ -100,7 +106,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-sm mt-sm-0 mt-2">
                                 <div class="card">
                                     <div class="card-header">
                                         CONTINUE ⛷️
@@ -119,7 +125,7 @@
                 <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
                    <div class="container">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-sm">
                                 <div class="card">
                                     <div class="card-header">
                                         START 💡
@@ -132,7 +138,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-sm mt-sm-0 mt-2">
                                 <div class="card">
                                     <div class="card-header">
                                         STOP ☠️
@@ -145,7 +151,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-sm mt-sm-0 mt-2">
                                 <div class="card">
                                     <div class="card-header">
                                         CONTINUE ⛷️
@@ -191,7 +197,7 @@
                     "column": column,
                     "text": ele.value
                 })
-            });
+            }).then(response => init());
 
             ele.value = ''
         }
@@ -218,6 +224,7 @@
 
 
     function refreshList(list) {
+        console.log(`list: ${list}`);
         list = JSON.parse(list);
         console.log(list[0][0][0])
 
